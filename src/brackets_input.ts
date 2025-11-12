@@ -1,10 +1,15 @@
-const validateSection = document.getElementById('validateInput') as HTMLInputElement;
-const form = validateSection.getElementById('bracketsForm') as HTMLInputElement;
+const form = document.getElementById('bracketsForm') as HTMLInputElement;
 
 
-
+// TODO logic
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-
+    e.preventDefault();
+    console.log(e)
+    // for (const char of e.value)
 });
+// TODO error - read from input
+
+// TODO input validation (brackets only)
+
+
+// TODO types
