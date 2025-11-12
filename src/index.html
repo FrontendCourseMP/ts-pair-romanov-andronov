@@ -26,13 +26,16 @@
       </section>
 
 
-      <section>
+      <section id="validateInput">
 
         <div class="form-group">
-          <label>
-            Введите строку:
-            <input type="number" id="brackets" placeholder="Например: {}{}{[[{[()]}]))]}}" />
-          </label>
+          <form id="bracketsForm" onsubmit="">
+            <label>
+              Введите строку:
+              <input type="string" id="brackets" placeholder="Например: {}{}{[[{[()]}]))]}}" />
+            </label>
+            <button type="submit">Проверить валидацию</button>
+          </form>
       </div>
       </section>
     </main>

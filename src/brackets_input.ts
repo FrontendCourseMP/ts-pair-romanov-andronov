@@ -1,5 +1,10 @@
-const inputElement = document.getElementById('textInput') as HTMLInputElement;
+const validateSection = document.getElementById('validateInput') as HTMLInputElement;
+const form = validateSection.getElementById('bracketsForm') as HTMLInputElement;
 
-inputElement.addEventListener('input', () => {
-  console.log('Текущий ввод:', inputElement.value);
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+
 });
