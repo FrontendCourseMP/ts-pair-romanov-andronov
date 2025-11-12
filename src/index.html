@@ -1,51 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Полное время прибытия(лабораторная 1)</title>
+    <script src="TimeParser.ts"></script>
+    <script src="brackets_input.ts"></script>
   </head>
   <body>
-    <div class="form-group">
-      <label for="scheduledTime">Время по расписанию ЧЧ</label>
-      <input type="number" id="scheduledTime" placeholder="Например: 22" />
-    </div>
+    <main>
+      <section>
+      <div class="form-group">
+        <label for="scheduledTime">Время по расписанию ЧЧ</label>
+        <input type="number" id="scheduledTime" placeholder="Например: 22" />
+      </div>
 
-    <div class="form-group">
-      <label for="hoursDelay">Количество часов опоздания:</label>
-      <input type="number" id="hoursDelay" placeholder="Например: 2" min="0" />
-    </div>
+      <div class="form-group">
+        <label for="hoursDelay">Количество часов опоздания:</label>
+        <input type="number" id="hoursDelay" placeholder="Например: 2" min="0" />
+      </div>
 
-    <button onclick="calculateTime()">Рассчитать новое время</button>
+      <button onclick="calculateTime()">Рассчитать новое время</button>
 
-    <div id="result" class="result"></div>
+      <div id="result" class="result"></div>
+      </section>
+
+
+      <section>
+
+        <div class="form-group">
+          <label>
+            Введите строку:
+            <input type="number" id="brackets" placeholder="Например: {}{}{[[{[()]}]))]}}" />
+          </label>
+      </div>
+      </section>
+    </main>
   </body>
-
-  <script>
-    function calculateTime() {
-      const scheduledTime = document.getElementById("scheduledTime").value;
-      const hoursDelay = parseInt(document.getElementById("hoursDelay").value);
-      const resultDiv = document.getElementById("result");
-
-      try {
-        // Используем функцию из TypeScript модуля
-        const newTime = TimeCalculator.calculateNewArrivalTime(
-          scheduledTime,
-          hoursDelay
-        );
-
-        resultDiv.innerHTML = `
-                    📍 Время по расписанию: <strong>${scheduledTime}</strong><br>
-                    ⏰ Часов опоздания: <strong>${hoursDelay}</strong><br>
-                    🎯 Новое время прибытия: <strong>${newTime}</strong>
-                `;
-        resultDiv.className = "result success";
-        resultDiv.style.display = "block";
-      } catch (error) {
-        resultDiv.innerHTML = `❌ Ошибка: ${error.message}`;
-        resultDiv.className = "result error";
-        resultDiv.style.display = "block";
-      }
-    }
-  </script>
 </html>
