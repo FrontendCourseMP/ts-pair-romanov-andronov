@@ -1,4 +1,4 @@
-import { handleSubmit } from "./handleSubmit.js";
+import { handleSubmit } from "../brackets/handleSubmit.js";
 
 // Экспортируем функцию в глобальную область
 declare global {
