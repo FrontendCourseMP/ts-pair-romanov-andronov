@@ -3,41 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Полное время прибытия(лабораторная 1)</title>
-    <script src="TimeParser.ts"></script>
-    <script src="brackets_input.ts"></script>
+    <title>Веб разработка на стороне клиента, практика</title>
+    <script type="module" src="/dist/TimeParser.js"></script>
+    <script type="module" src="/dist/brackets_input.js"></script>
   </head>
   <body>
     <main>
       <section>
-      <div class="form-group">
-        <label for="scheduledTime">Время по расписанию ЧЧ</label>
-        <input type="number" id="scheduledTime" placeholder="Например: 22" />
-      </div>
-
-      <div class="form-group">
-        <label for="hoursDelay">Количество часов опоздания:</label>
-        <input type="number" id="hoursDelay" placeholder="Например: 2" min="0" />
-      </div>
-
-      <button onclick="calculateTime()">Рассчитать новое время</button>
-
-      <div id="result" class="result"></div>
-      </section>
-
-
-      <section id="validateInput">
+        <div class="form-group">
+          <label for="scheduledTime">Время по расписанию ЧЧ</label>
+          <input type="number" id="scheduledTime" placeholder="Например: 22" />
+        </div>
 
         <div class="form-group">
-          <form id="bracketsForm" onsubmit="">
+          <label for="hoursDelay">Количество часов опоздания:</label>
+          <input
+            type="number"
+            id="hoursDelay"
+            placeholder="Например: 2"
+            min="0"
+          />
+        </div>
+
+        <button onclick="calculateTime()">Рассчитать новое время</button>
+
+        <div id="result" class="result"></div>
+      </section>
+
+      <section id="validateInput">
+        <div class="form-group">
+          <form id="bracketsForm" onsubmit="return handleSubmit(event);">
             <label>
               Введите строку:
-              <input type="string" id="brackets" placeholder="Например: {}{}{[[{[()]}]))]}}" />
+              <input
+                type="text"
+                id="brackets"
+                name="brackets"
+                pattern="[\(\)\[\]\{\}]*"
+                title="Допустимы только скобки: (), [], {}"
+                placeholder="Например: {}{}{[[{[()]}]))]}}"
+                oninput="this.value = this.value.replace(/[^()\[\]{}]/g, '');"
+              />
             </label>
             <button type="submit">Проверить валидацию</button>
           </form>
-      </div>
-      <!-- TODO output -->
+        </div>
+        <div id="bracketsResult" class="result"></div>
       </section>
     </main>
   </body>

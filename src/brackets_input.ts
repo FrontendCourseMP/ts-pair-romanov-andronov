@@ -1,15 +1,10 @@
-const form = document.getElementById('bracketsForm') as HTMLInputElement;
+import { handleSubmit } from "./handleSubmit.js";
 
+// Экспортируем функцию в глобальную область
+declare global {
+  interface Window {
+    handleSubmit: (e: Event) => boolean;
+  }
+}
 
-// TODO logic
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log(e)
-    // for (const char of e.value)
-});
-// TODO error - read from input
-
-// TODO input validation (brackets only)
-
-
-// TODO types
+window.handleSubmit = handleSubmit;
