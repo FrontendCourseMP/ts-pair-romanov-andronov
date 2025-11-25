@@ -6,7 +6,22 @@ interface TimeCalculator {
   calculateNewArrivalTime(scheduledTime: string, hoursDelay: number): string;
 }
 
-declare const TimeCalculator: TimeCalculator;
+const TimeCalculator: TimeCalculator = {
+  calculateNewArrivalTime(scheduledTime: string, hoursDelay: number): string {
+    const hours = parseInt(scheduledTime, 10);
+    
+    if (isNaN(hours) || hours < 0 || hours > 23) {
+      throw new Error("Время должно быть в диапазоне от 0 до 23 часов");
+    }
+    
+    if (hoursDelay < 0) {
+      throw new Error("Задержка не может быть отрицательной");
+    }
+    
+    const newHours = (hours + hoursDelay) % 24;
+    return newHours.toString();
+  }
+};
 
 function calculateTime(): void {
   const scheduledTimeInput = document.getElementById("scheduledTime") as HTMLInputElement;
@@ -48,3 +63,5 @@ function calculateTime(): void {
     resultDiv.style.display = "block";
   }
 }
+
+(window as any).calculateTime = calculateTime;
