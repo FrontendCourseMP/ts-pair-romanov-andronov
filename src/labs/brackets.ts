@@ -1,10 +1,6 @@
 import { handleSubmit } from "../brackets/handleSubmit.js";
 
-// Экспортируем функцию в глобальную область
-declare global {
-  interface Window {
-    handleSubmit: (e: Event) => boolean;
-  }
+const form = document.getElementById('bracketsForm');
+if (form) {
+  form.addEventListener('submit', handleSubmit);
 }
-
-window.handleSubmit = handleSubmit;
